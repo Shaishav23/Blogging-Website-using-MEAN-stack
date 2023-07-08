@@ -17,5 +17,7 @@ export class PostListComponent {
   // ]
   @Input() posts: Post[] = [];
 
+  //Add's dependency injection
+  //'public' will create a new property and store the incoming value in that property.
   constructor(public postsService: PostsService) {}
 }
