@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -41,13 +41,24 @@ app.post("/api/posts", (req, res, next) => {
   });
 });
 
-app.use("/api/posts", (req, res, next) => {
+app.get("/api/posts", (req, res, next) => {
   Post.find()
     .then(documents => {
       res.status(200).json({
         message: 'Posts successfully fetched!',
         posts: documents
     });
+  });
+});
+
+app.delete("/api/posts/:id", (req, res, next) => {
+  console.log(req.params.id);
+  Post.deleteOne({_id: req.params.id}).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted!" });
+  }).catch(error =>  {
+    console.log(error); // Check if there's any error in the server logs
+    res.status(500).json({ error: "An error occurred while deleting the post." });
   });
 });
 
