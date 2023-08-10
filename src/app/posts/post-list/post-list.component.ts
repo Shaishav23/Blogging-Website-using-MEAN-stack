@@ -18,15 +18,18 @@ export class PostListComponent implements OnInit, OnDestroy{
   // ]
   posts: Post[] = [];
   private postsSub: Subscription;
+  isLoading = false;
 
   //Add's dependency injection
   //'public' will create a new property and store the incoming value in that property.
   constructor(public postsService: PostsService) {}
 
   ngOnInit(){
+    this.isLoading = true;
     this.postsService.getPosts();
     this.postsSub = this.postsService.getPostUpdateListener()
     .subscribe((posts: Post[]) => {
+      this.isLoading = false;
     this.posts = posts;
     });
   }
