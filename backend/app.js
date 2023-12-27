@@ -1,22 +1,24 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const path = require("path");
-
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://Shaishav23:" +
-                  process.env.MONGO_ATLAS_PW +
-                  "@cluster0.b2lkjqo.mongodb.net/?retryWrites=true&w=majority")
+mongoose
+  .connect(
+    "mongodb+srv://Shaishav23:" +
+      process.env.MONGO_ATLAS_PW +
+      "@cluster0.b2lkjqo.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
-    console.log('Connected to database');
+    console.log("Connected to database");
   })
   .catch(() => {
-    console.log('Connection is failed');
+    console.log("Connection is failed");
   });
 
 app.use(bodyParser.json());
