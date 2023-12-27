@@ -15,7 +15,7 @@ export class AuthGuard {
   ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> => {
     const isAuth = this.authService.getIsAuth();
     if (!isAuth) {
-      return this.router.createUrlTree(['/login']);
+      return this.router.createUrlTree(['/auth/login']);
     }
     return isAuth;
   };
