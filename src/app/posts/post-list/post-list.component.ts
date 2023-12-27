@@ -12,11 +12,6 @@ import { AuthService } from 'src/app/authentication/auth.service';
   styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  // posts = [
-  //   {title: 'First Post', content: 'This is the first post content'},
-  //   {title: 'Second Post', content: 'This is the second post content'},
-  //   {title: 'Third Post', content: 'This is the third post content'}
-  // ]
   totalPosts = 0;
   postPerPage = 2;
   currentPage = 1;
@@ -28,8 +23,6 @@ export class PostListComponent implements OnInit, OnDestroy {
   private postsSub: Subscription;
   private authStatusSub: Subscription;
 
-  //Add's dependency injection
-  //'public' will create a new property and store the incoming value in that property.
   constructor(
     public postsService: PostsService,
     private authService: AuthService
