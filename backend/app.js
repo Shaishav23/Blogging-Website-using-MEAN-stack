@@ -21,6 +21,12 @@ mongoose
     console.log("Connection is failed");
   });
 
+app.use("/", express.static(path.join(__dirname, "../dist/mean-stack")));
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "../dist/mean-stack/index.html"));
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
