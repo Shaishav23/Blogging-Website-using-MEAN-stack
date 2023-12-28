@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { Post } from './post.model';
 
 const BACKEND_URL = environment.apiUrl + '/posts/';
